@@ -1,66 +1,68 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
+
 <head>
-<title>Python Getting Started on Heroku</title>
-  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <style type="text/css">
-    .jumbotron {
-        background: #532f8c;
-        color: white;
-        padding-bottom: 80px
-    }
-    .jumbotron .btn-primary {
-        background: #845ac7;
-        border-color: #845ac7
-    }
-    .jumbotron .btn-primary:hover {
-        background: #7646c1
-    }
-    .jumbotron p {
-        color: #d9ccee;
-        max-width: 75%;
-        margin: 1em auto 2em
-    }
-    .navbar+.jumbotron {
-        margin-top: -20px
-    }
-    .jumbotron .lang-logo {
-        display: block;
-        background: #b01302;
-        border-radius: 50%;
-        overflow: hidden;
-        width: 100px;
-        height: 100px;
-        margin: auto;
-        border: 2px solid white
-    }
-    .jumbotron .lang-logo img {
-        max-width: 100%
-    }
+
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-  </style>
+{% block title %}
+    {% if title %}
+        <title>{{title}} | My Stock</title> 
+    {% else %}
+        <title>My Stock Table</title>
+    {% endif %}
+{% endblock title %}
+
+{% block head %}
+{% endblock head %}
+    
 </head>
-<body>
-<nav class="navbar navbar-default navbar-static-top navbar-inverse">
-  <div class="container">
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
-      </li>
-      
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-right">
-        <a href="#"><span class="glyphicon glyphicon-book"></span> Place Holder</a>
-      </li>
-    </ul>
-  </div>
-</nav>
 
-{% block content %}{% endblock %}
+<body>
+
+<div class="container-fluid">
+    
+    <!-- NAVIGATION BAR -->
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="d-flex justify-content-between px-5 mx-auto" style="width: 80%;">
+            <span class="navbar-text text-white">Allan Pharmacy</span>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link active" href="{% url 'all' %}">Stock</a>
+                </li>
+                
+                <!-- 
+                ##
+                ## UNCOMMENT THESE LINES IF YOU HAVE A FUNCTIONAL CRUD FOR THE GENRE MODEL 
+                ## CHANGE ALSO THE URL INFO 'Stock:all' to 'Stock:genre_all'     
+                
+                <li class="nav-item active">
+                    <a class="nav-link active" href="{% url 'all' %}">Genres</a>
+                </li>
+
+                -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- END OF NAVIGATION BAR -->
+
+</div>
+
+{% block content %}
+{% endblock content %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>
