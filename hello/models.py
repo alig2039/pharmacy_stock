@@ -1,15 +1,6 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
-# Model for workers in the pharmacy
-class Staff(models.Model):
-    names = models.CharField(max_length=100)
-    phone_number= models.PositiveIntegerField()
-    role = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.names
-
 # Model for the pharmacy's customers
 class Customer(models.Model):
     names = models.CharField(max_length=100)
@@ -23,7 +14,7 @@ class Customer(models.Model):
 class Stock(models.Model):
     name = models.CharField(max_length=100)
     unit_price = models.FloatField(blank=True, null=True, validators=[MinValueValidator(0)])
-    quantity = models.PositiveIntegerField()
+    quantity = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return self.name
@@ -39,3 +30,11 @@ class Stock(models.Model):
                 
                 for field in self.__class__._meta.fields[1:]
             ]
+
+class Sales(models.Model):
+    customer = models.ForeignKey(Customer, on_delete=models.RESTRICT)
+    drug = models.ForeignKey(Stock, on_delete=models.RESTRICT)
+    quantity = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return self.customer

@@ -1,5 +1,4 @@
-from django.urls import path, include
-
+from django.urls import path, include, re_path
 from django.contrib import admin
 
 admin.autodiscover()
@@ -20,7 +19,21 @@ urlpatterns = [
     path('stock/create/', StockCreateView.as_view(), name='stock_create'),
     path('stock/<int:pk>/update/', StockUpdateView.as_view(), name='stock_update'),
     path('stock/<int:pk>/delete/', StockDeleteView.as_view(), name='stock_delete'),
-    
+
+    path('customer/', CustomerListView.as_view(), name='customer'),
+    path('customer/<int:pk>/detail', CustomerDetailView.as_view(), name='customer_detail'),
+    path('customer/create/', CustomerCreateView.as_view(), name='customer_create'),
+    path('customer/<int:pk>/update/', CustomerUpdateView.as_view(), name='customer_update'),
+    path('customer/<int:pk>/delete/', CustomerDeleteView.as_view(), name='customer_delete'),
+
+    path('sales/', SalesListView.as_view(), name='sales'),
+    path('sales/<int:pk>/detail', SalesDetailView.as_view(), name='sales_detail'),
+    path('sales/create/', SalesCreateView.as_view(), name='sales_create'),
+    path('sales/<int:pk>/update/', SalesUpdateView.as_view(), name='sales_update'),
+    path('sales/<int:pk>/delete/', SalesDeleteView.as_view(), name='sales_delete'),
+
     path("admin/", admin.site.urls),
+    re_path(r"^accounts/", include("django.contrib.auth.urls")),
+
 ]
 
