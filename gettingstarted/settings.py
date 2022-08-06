@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
+from decouple import config
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -84,10 +85,10 @@ WSGI_APPLICATION = "gettingstarted.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE" : "django.db.backends.postgresql_psycopg2",
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': '50d1781954e353bfc2ce82952c7e5a213323ec33793a93da39d8dc78be9d627c',
-        'HOST': 'ec2-52-204-157-26.compute-1.amazonaws.com',
+        'NAME': config("NAME", default=''),
+        'USER': config("USER", default=''),
+        'PASSWORD': config("PASSWORD", default=''),
+        'HOST': config("HOST", default=''),
         'PORT': '5432'
     }
     # "default": {

@@ -3,3 +3,4 @@ gunicorn
 django-heroku
 django-tables2
 django-extensions
+python-decouple
