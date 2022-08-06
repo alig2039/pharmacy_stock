@@ -8,11 +8,11 @@ class StockForm(models.Model):
         model = Stock
 
 # Client form
-class ClientForm(models.Model):
+class CustomerForm(models.Model):
     class Meta:
-        model = Client
+        model = Customer
 
 # Staff form
-class StaffForm(models.Model):
+class SalesForm(models.Model):
     class Meta:
-        model = Staff
+        model = Sales

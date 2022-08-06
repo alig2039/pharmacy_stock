@@ -10,6 +10,18 @@ class Customer(models.Model):
     def __str__(self):
         return self.names
 
+    def get_fields(self):
+        return [(field.verbose_name, field.value_from_object(self))
+                
+                # if field.verbose_name != 'genre' 
+                
+                # else 
+                #     (field.verbose_name, 
+                #     Genre.objects.get(pk=field.value_from_object(self)).name)
+                
+                for field in self.__class__._meta.fields[1:]
+            ]
+
 # Pharmacy stock model
 class Stock(models.Model):
     name = models.CharField(max_length=100)
@@ -38,3 +50,15 @@ class Sales(models.Model):
 
     def __str__(self):
         return self.customer
+
+    def get_fields(self):
+        return [(field.verbose_name, field.value_from_object(self))
+                
+                # if field.verbose_name != 'genre' 
+                
+                # else 
+                #     (field.verbose_name, 
+                #     Genre.objects.get(pk=field.value_from_object(self)).name)
+                
+                for field in self.__class__._meta.fields[1:]
+            ]
