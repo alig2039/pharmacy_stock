@@ -32,6 +32,12 @@ urlpatterns = [
     path('sales/<int:pk>/update/', SalesUpdateView.as_view(), name='sales_update'),
     path('sales/<int:pk>/delete/', SalesDeleteView.as_view(), name='sales_delete'),
 
+    path('whusers/', UserListView.as_view(), name='whusers'),
+    path('whusers/<int:pk>/detail', UserDetailView.as_view(), name='whusers_detail'),
+    path('whusers/create/', UserCreateView.as_view(), name='whusers_create'),
+    path('whusers/<int:pk>/update/', UserUpdateView.as_view(), name='whusers_update'),
+    path('whusers/<int:pk>/delete/', UserDeleteView.as_view(), name='whusers_delete'),
+
     path("admin/", admin.site.urls),
     re_path(r"^accounts/", include("django.contrib.auth.urls")),
 

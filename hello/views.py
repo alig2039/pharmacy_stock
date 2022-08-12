@@ -6,7 +6,36 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.shortcuts import *
 from .models import *
+from django.contrib.auth.models import User
+
+class UserBaseView(View):
+    model = User
+    fields = '__all__'
+    success_url = reverse_lazy('whusers')
+
+class UserListView(UserBaseView, ListView):
+    """View to list all users.
+    Use the 'user_list' variable in the template
+    to access all users objects"""
+    
+class UserDetailView(UserBaseView, DetailView):
+    """View to list the details from one users.
+    Use the 'users' variable in the template to access
+    the specific users here and in the Views below"""
+    
+class UserCreateView(PermissionRequiredMixin, UserBaseView, CreateView):
+    """View to create a new users"""
+    permission_required = 'users.add_user'
+
+class UserUpdateView(PermissionRequiredMixin, UserBaseView, UpdateView):
+    """View to update a stock"""
+    permission_required = 'users.change_user'
+
+class UserDeleteView(PermissionRequiredMixin, UserBaseView, DeleteView):
+    """View to delete a stock"""
+    permission_required = 'users.delete_user'
 
 class StockBaseView(View):
     model = Stock
