@@ -1,3 +1,4 @@
+from django.contrib.auth.forms import UserCreationForm
 from multiprocessing.connection import Client
 from .models import *
 from .views import *

@@ -2,13 +2,15 @@ from django.views import View
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.contrib.auth import login
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import *
 from .models import *
-from django.contrib.auth.models import User
 
 class UserBaseView(View):
     model = User
@@ -131,8 +133,24 @@ class SalesUpdateView(SalesBaseView, UpdateView):
         # remember the import: from django.http import HttpResponseRedirect
         return HttpResponseRedirect(self.get_success_url())
 
-
 class SalesDeleteView(PermissionRequiredMixin, SalesBaseView, DeleteView):
     """View to delete a sale"""
     permission_required = 'sales.delete_sales' 
 
+def register(request):
+    if request.method == "GET":
+        return render(
+            request, "hello/register.html",
+            {"form": UserCreationForm}
+        )
+    elif request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return HttpResponseRedirect(reverse_lazy('whusers'))
+        else:
+            return render(
+            request, "hello/register.html",
+            {"form": UserCreationForm}
+        )

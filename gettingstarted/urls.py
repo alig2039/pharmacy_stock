@@ -40,6 +40,7 @@ urlpatterns = [
 
     path("admin/", admin.site.urls),
     re_path(r"^accounts/", include("django.contrib.auth.urls")),
+    re_path(r"^register/", register, name="register"),
 
 ]
 

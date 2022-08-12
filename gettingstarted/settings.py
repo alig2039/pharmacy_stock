@@ -84,12 +84,12 @@ WSGI_APPLICATION = "gettingstarted.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE" : "django.db.backends.postgresql_psycopg2",
-        'NAME': config("NAME", default=''),
-        'USER': config("USER", default=''),
-        'PASSWORD': config("PASSWORD", default=''),
-        'HOST': config("HOST", default=''),
-        'PORT': '5432'
+       "ENGINE" : "django.db.backends.postgresql_psycopg2",
+       'NAME': config("NAME", default=''),
+       'USER': config("USER", default=''),
+       'PASSWORD': config("PASSWORD", default=''),
+       'HOST': config("HOST", default=''),
+       'PORT': '5432'
     }
     # "default": {
     #     "ENGINE" : "django.db.backends.sqlite3",
