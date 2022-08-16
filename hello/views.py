@@ -18,26 +18,19 @@ class UserBaseView(View):
     success_url = reverse_lazy('whusers')
 
 class UserListView(UserBaseView, ListView):
-    """View to list all users.
-    Use the 'user_list' variable in the template
-    to access all users objects"""
+    pass
     
 class UserDetailView(UserBaseView, DetailView):
-    """View to list the details from one users.
-    Use the 'users' variable in the template to access
-    the specific users here and in the Views below"""
+    pass
     
 class UserCreateView(PermissionRequiredMixin, UserBaseView, CreateView):
-    """View to create a new users"""
-    permission_required = 'users.add_user'
+    permission_required = 'auth.add_user'
 
 class UserUpdateView(PermissionRequiredMixin, UserBaseView, UpdateView):
-    """View to update a stock"""
-    permission_required = 'users.change_user'
+    permission_required = 'auth.change_user'
 
 class UserDeleteView(PermissionRequiredMixin, UserBaseView, DeleteView):
-    """View to delete a stock"""
-    permission_required = 'users.delete_user'
+    permission_required = 'auth.delete_user'
 
 class StockBaseView(View):
     model = Stock
@@ -45,25 +38,18 @@ class StockBaseView(View):
     success_url = reverse_lazy('all')
 
 class StockListView(StockBaseView, ListView):
-    """View to list all stock.
-    Use the 'stock_list' variable in the template
-    to access all stock objects"""
-
+    pass
+    
 class StockDetailView(StockBaseView, DetailView):
-    """View to list the details from one stock.
-    Use the 'stock' variable in the template to access
-    the specific stock here and in the Views below"""
-
+    pass
+    
 class StockCreateView(PermissionRequiredMixin, StockBaseView, CreateView):
-    """View to create a new stock"""
     permission_required = 'stock.add_stock'
 
 class StockUpdateView(PermissionRequiredMixin, StockBaseView, UpdateView):
-    """View to update a stock"""
     permission_required = 'stock.change_stock'
 
 class StockDeleteView(PermissionRequiredMixin, StockBaseView, DeleteView):
-    """View to delete a stock"""
     permission_required = 'stock.delete_stock'
 
 class CustomerBaseView(View):
@@ -72,25 +58,18 @@ class CustomerBaseView(View):
     success_url = reverse_lazy('customer')
 
 class CustomerListView(CustomerBaseView, ListView):
-    """View to list all stock.
-    Use the 'customer_list' variable in the template
-    to access all stock objects"""
-
+    pass
+    
 class CustomerDetailView(CustomerBaseView, DetailView):
-    """View to list the details from one Customer.
-    Use the 'Customer' variable in the template to access
-    the specific stock here and in the Views below"""
-
+    pass
+    
 class CustomerCreateView(PermissionRequiredMixin, CustomerBaseView, CreateView):
-    """View to create a new Customer"""
     permission_required = 'customer.add_customer'
 
 class CustomerUpdateView(PermissionRequiredMixin, CustomerBaseView, UpdateView):
-    """View to update a Customer"""
     permission_required = 'customer.change_customer'
 
 class CustomerDeleteView(PermissionRequiredMixin, CustomerBaseView, DeleteView):
-    """View to delete a Customer"""
     permission_required = 'customer.delete_customer'
 
 class SalesBaseView(View):
@@ -99,17 +78,12 @@ class SalesBaseView(View):
     success_url = reverse_lazy('sales')
 
 class SalesListView(SalesBaseView, ListView):
-    """View to list all SalesBaseView.
-    Use the 'sales_list' variable in the template
-    to access all Sales objects"""
-
+    pass
+    
 class SalesDetailView(SalesBaseView, DetailView):
-    """View to list the details from one sale.
-    Use the 'Sales' variable in the template to access
-    the specific Saleshere and in the Views below"""
-
+    pass
+    
 class SalesCreateView(SalesBaseView, CreateView):
-    """View to create a new sale"""
     def form_valid(self, form):
         self.object = form.save()
         #reduce stock from order number
@@ -121,7 +95,6 @@ class SalesCreateView(SalesBaseView, CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 class SalesUpdateView(SalesBaseView, UpdateView):
-    """View to update a sale"""
     def form_valid(self, form):
         self.object = form.save()
         #reduce stock from order number
@@ -134,7 +107,6 @@ class SalesUpdateView(SalesBaseView, UpdateView):
         return HttpResponseRedirect(self.get_success_url())
 
 class SalesDeleteView(PermissionRequiredMixin, SalesBaseView, DeleteView):
-    """View to delete a sale"""
     permission_required = 'sales.delete_sales' 
 
 def register(request):
@@ -154,3 +126,7 @@ def register(request):
             request, "hello/register.html",
             {"form": UserCreationForm}
         )
+
+def permission_denied(request, exception):
+   context = {}
+   return render(request,'errors/403.html', context)

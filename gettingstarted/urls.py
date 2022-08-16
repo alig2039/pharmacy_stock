@@ -1,6 +1,5 @@
 from django.urls import path, include, re_path
 from django.contrib import admin
-
 admin.autodiscover()
 
 from hello.views import *
@@ -42,5 +41,7 @@ urlpatterns = [
     re_path(r"^accounts/", include("django.contrib.auth.urls")),
     re_path(r"^register/", register, name="register"),
 
+ 
 ]
 
+handler403 = 'hello.views.permission_denied'
