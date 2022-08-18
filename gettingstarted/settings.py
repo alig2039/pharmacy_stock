@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = "CHANGE_ME!!!! (P.S. the SECRET_KEY environment variable will be used, if set, instead)."
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
-    "hello",
+    "stock_manager",
     "django_tables2",
 ]
 
@@ -91,11 +91,11 @@ DATABASES = {
        'HOST': config("HOST", default=''),
        'PORT': '5432'
     }
-#     "default": {
-#         "ENGINE" : "django.db.backends.sqlite3",
-#         "NAME": os.path.join(BASE_DIR, "db.sqlite3")
-#     }
-# }
+    # "default": {
+    #     "ENGINE" : "django.db.backends.sqlite3",
+    #     "NAME": os.path.join(BASE_DIR, "db1.sqlite3")
+    # }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

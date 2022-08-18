@@ -85,6 +85,8 @@ class SalesDetailView(SalesBaseView, DetailView):
     
 class SalesCreateView(SalesBaseView, CreateView):
     def form_valid(self, form):
+        self.object.created_by = request.user
+        self.object.updated_by = request.user
         self.object = form.save()
         #reduce stock from order number
         stock = Stock.objects.get(id=self.object.id)
@@ -96,6 +98,7 @@ class SalesCreateView(SalesBaseView, CreateView):
 
 class SalesUpdateView(SalesBaseView, UpdateView):
     def form_valid(self, form):
+        self.object.updated_by = request.user
         self.object = form.save()
         #reduce stock from order number
         #potential loop hole as update might deduct more as a total sale value
@@ -112,7 +115,7 @@ class SalesDeleteView(PermissionRequiredMixin, SalesBaseView, DeleteView):
 def register(request):
     if request.method == "GET":
         return render(
-            request, "hello/register.html",
+            request, "stock_manager/register.html",
             {"form": UserCreationForm}
         )
     elif request.method == "POST":
@@ -123,7 +126,7 @@ def register(request):
             return HttpResponseRedirect(reverse_lazy('whusers'))
         else:
             return render(
-            request, "hello/register.html",
+            request, "stock_manager/register.html",
             {"form": UserCreationForm}
         )
 

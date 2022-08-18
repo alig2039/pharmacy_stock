@@ -1,6 +1,6 @@
 {
-  "name": "Start on Heroku: Python",
-  "description": "A barebones Python app, which can easily be deployed to Heroku.",
+  "name": "Allan's Medical Warehouse",
+  "description": "Stock Management for Alan's Medical Warehouse.",
   "image": "heroku/python",
   "repository": "https://github.com/heroku/python-getting-started",
   "keywords": ["python", "django" ],

@@ -2,15 +2,7 @@ from django.urls import path, include, re_path
 from django.contrib import admin
 admin.autodiscover()
 
-from hello.views import *
-
-# To add a new path, first import the app:
-# import blog
-#
-# Then add the new path:
-# path('blog/', blog.urls, name="blog")
-#
-# Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
+from stock_manager.views import *
 
 urlpatterns = [
     path("", StockListView.as_view(), name="all"),
@@ -44,4 +36,4 @@ urlpatterns = [
  
 ]
 
-handler403 = 'hello.views.permission_denied'
+handler403 = 'stock_manager.views.permission_denied'
