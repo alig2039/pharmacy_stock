@@ -15,6 +15,7 @@
             <thead>
                 <tr>
                     {% comment %} <th>#</th> {% endcomment %}
+                    <th class="text-center" scope="col">supplier Name</th>
                     <th class="text-center" scope="col">Contact Name</th>
                     <th class="text-center" scope="col">Address</th>
                     <th class="text-center" scope="col">Phone Number</th>
@@ -27,6 +28,7 @@
                 {% for supplier in supplier_list %}
                 <tr>
                     {% comment %} <th scope="row">{{forloop.counter}}</th> {% endcomment %}
+                    <td class="text-center" scope="col">{{ supplier.supplier_name }}</td>
                     <td class="ml-5"><a href="{% url 'supplier_detail' supplier.id %}">{{supplier.contact_name}}</a></td>
                     <td class="text-center">{{supplier.address }}</td>
                     <td class="text-center">{{supplier.contact_number }}</td>

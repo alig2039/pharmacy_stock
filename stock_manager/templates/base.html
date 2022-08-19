@@ -50,7 +50,7 @@
 
             {% if user.is_authenticated %}
                     <div class="text-end">
-                        <a href="{% url 'whusers_detail' user.id %}">{{     user.username |title }}</a>
+                        <a href="{% url 'whusers_detail' user.id %}">{{ user.username |title }}</a>
                         <!--<a class="btn btn-outline-light me-2" href="{% url 'password_change' %}">Change Password</a>-->
                         <a class="btn btn-warning" href="{% url 'logout' %}">Log Out</a>
                     </div>               

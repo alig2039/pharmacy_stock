@@ -25,6 +25,7 @@ class Customer(models.Model):
 
 class Supplier(models.Model):
     contact_name = models.CharField(max_length=100)
+    supplier_name= models.CharField(max_length=100, default="Default")
     address = models.CharField(max_length=100)
     contact_number = models.CharField(max_length=20)
 

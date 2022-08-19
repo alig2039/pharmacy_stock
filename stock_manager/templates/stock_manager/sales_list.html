@@ -19,7 +19,9 @@
                     <th class="text-center" scope="col">Drug</th>
                     <th class="text-center" scope="col">Quantity</th>
                     <th class="text-center" scope="col">Sale Date</th>
+                    <th class="text-center" scope="col">Sold By</th>
                     <th class="text-center" scope="col">Last Updated</th>
+                    <th class="text-center" scope="col">Updated By</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -32,6 +34,10 @@
                     <td class="ml-5"><a href="{% url 'sales_detail' sale.id %}">{{sale.customer}}</a></td>
                     <td class="text-center">{{sale.drug}}</td>
                     <td class="text-center">{{sale.quantity}}</td>
+                    <td class="text-center">{{sale.created_at}}</td>
+                    <td class="text-center">{{sale.created_by}}</td>
+                    <td class="text-center">{{sale.updated_at}}</td>
+                    <td class="text-center">{{sale.updated_by}}</td>
                     <td><a href="{% url 'sales_update' sale.id %} ">Update</a></td>
                     <td><a href="{% url 'sales_delete' sale.id %}">Delete</a></td>
                 </tr>

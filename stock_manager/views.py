@@ -105,11 +105,11 @@ class SalesDetailView(SalesBaseView, DetailView):
     
 class SalesCreateView(SalesBaseView, CreateView):
     def form_valid(self, form):
-        self.object.created_by = request.user
-        self.object.updated_by = request.user
+        form.created_by = self.request.user
+        form.updated_by = self.request.user
         self.object = form.save()
         #reduce stock from order number
-        stock = Stock.objects.get(id=self.object.id)
+        stock = Stock.objects.get(name=self.object.drug)
         stock.quantity = stock.quantity - self.object.quantity
         stock.save()
         # do something with self.object
@@ -118,11 +118,11 @@ class SalesCreateView(SalesBaseView, CreateView):
 
 class SalesUpdateView(SalesBaseView, UpdateView):
     def form_valid(self, form):
-        self.object.updated_by = request.user
+        form.updated_by = self.request.user
         self.object = form.save()
         #reduce stock from order number
         #potential loop hole as update might deduct more as a total sale value
-        stock = Stock.objects.get(id=self.object.id)
+        stock = Stock.objects.get(name=self.object.drug)
         stock.quantity = stock.quantity - self.object.quantity
         stock.save()
         # do something with self.object
