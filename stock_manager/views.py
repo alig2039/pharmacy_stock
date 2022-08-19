@@ -72,6 +72,26 @@ class CustomerUpdateView(PermissionRequiredMixin, CustomerBaseView, UpdateView):
 class CustomerDeleteView(PermissionRequiredMixin, CustomerBaseView, DeleteView):
     permission_required = 'customer.delete_customer'
 
+class SupplierBaseView(View):
+    model = Supplier
+    fields = '__all__'
+    success_url = reverse_lazy('supplier')
+
+class SupplierListView(SupplierBaseView, ListView):
+    pass
+    
+class SupplierDetailView(SupplierBaseView, DetailView):
+    pass
+    
+class SupplierCreateView(PermissionRequiredMixin, SupplierBaseView, CreateView):
+    permission_required = 'supplier.add_supplier'
+
+class SupplierUpdateView(PermissionRequiredMixin, SupplierBaseView, UpdateView):
+    permission_required = 'supplier.change_supplier'
+
+class SupplierDeleteView(PermissionRequiredMixin, SupplierBaseView, DeleteView):
+    permission_required = 'supplier.delete_supplier'
+
 class SalesBaseView(View):
     model = Sales
     fields = '__all__'
