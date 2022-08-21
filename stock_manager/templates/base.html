@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE HTML>
 <html lang="en">
 
@@ -28,7 +29,9 @@
 <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="d-flex justify-content-between px-5 mx-auto" style="width: 80%;">
-            <!--<span class="navbar-text text-white">Hello {{ user.username|default:'Guest' }}, Welcome to Allan Medical Warehouse</span>-->
+            <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img class="bi me-2" width="40" height="32" src="{% static 'logo.jpg' %}" alt="Allan Pharmacy Logo" aria-label="Bootstrap"/>
+            </a>
             
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-left mb-md-0 navbar-nav mr-auto">
                 <li class="nav-item active">
