@@ -29,6 +29,10 @@
                     <tr>
                         <td>Email</td>
                         <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Group</td>
+                        <td>{% for group in user.groups.all %}{{group}}{% if not forloop.last %},{% endif %}{% endfor %}</td>
                     </tr>                        
                 </tbody>
             </table>

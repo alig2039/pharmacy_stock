@@ -18,6 +18,7 @@
                     <th class="text-center" scope="col">Username</th>
                     <th class="text-center" scope="col">First Name</th>
                     <th class="text-center" scope="col">Last Name</th>
+                    <th class="text-center" scope="col">Group</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -30,6 +31,7 @@
                     <td class="ml-5"><a href="{% url 'whusers_detail' user.id %}">{{user.username}}</a></td>
                     <td class="ml-5">{{user.firstname}}</td>
                     <td class="ml-5">{{user.lastname}}</td>
+                    <td>{% for group in user.groups.all %}{{group}}{% if not forloop.last %},{% endif %}{% endfor %}</td>
                     <td><a href="{% url 'whusers_update' user.id %} ">Update</a></td>
                     <td><a href="{% url 'whusers_delete' user.id %}">Delete</a></td>
                 </tr>
