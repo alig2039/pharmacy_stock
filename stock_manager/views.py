@@ -104,9 +104,11 @@ class SalesDetailView(SalesBaseView, DetailView):
     pass
     
 class SalesCreateView(SalesBaseView, CreateView):
+    fields = ['customer', 'drug', 'quantity']
+
     def form_valid(self, form):
-        form.created_by = self.request.user
-        form.updated_by = self.request.user
+        form.instance.created_by = self.request.user
+        form.instance.updated_by = self.request.user
         self.object = form.save()
         #reduce stock from order number
         stock = Stock.objects.get(name=self.object.drug)
@@ -117,8 +119,10 @@ class SalesCreateView(SalesBaseView, CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 class SalesUpdateView(SalesBaseView, UpdateView):
+    fields = ['customer', 'drug', 'quantity']
+
     def form_valid(self, form):
-        form.updated_by = self.request.user
+        form.instance.updated_by = self.request.user
         self.object = form.save()
         #reduce stock from order number
         #potential loop hole as update might deduct more as a total sale value
