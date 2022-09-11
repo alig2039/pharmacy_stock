@@ -32,16 +32,22 @@
                     <td class="ml-5"><a href="{% url 'supplier_detail' supplier.id %}">{{supplier.contact_name}}</a></td>
                     <td class="text-center">{{supplier.address }}</td>
                     <td class="text-center">{{supplier.contact_number }}</td>
-                    <td><a href="{% url 'supplier_update' supplier.id %} ">Update</a></td>
-                    <td><a href="{% url 'supplier_delete' supplier.id %}">Delete</a></td>
+                    {% if perms.supplier.change_supplier %}
+                        <td><a href="{% url 'supplier_update' supplier.id %} ">Update</a></td>
+                    {% endif %}
+                    {% if perms.supplier.delete_supplier %}
+                        <td><a href="{% url 'supplier_delete' supplier.id %}">Delete</a></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         
             </tbody>
         </table>    
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'supplier_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
-        </div>
+        {% if perms.supplier.add_supplier %}
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'supplier_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
+            </div>
+        {% endif %}
     </div>
         
 </div>

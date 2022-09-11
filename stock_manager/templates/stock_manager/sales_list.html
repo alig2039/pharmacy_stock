@@ -38,16 +38,22 @@
                     <td class="text-center">{{sale.created_by}}</td>
                     <td class="text-center">{{sale.updated_at}}</td>
                     <td class="text-center">{{sale.updated_by}}</td>
-                    <td><a href="{% url 'sales_update' sale.id %} ">Update</a></td>
-                    <td><a href="{% url 'sales_delete' sale.id %}">Delete</a></td>
+                    {% if perms.sales.change_sales %}
+                        <td><a href="{% url 'sales_update' sale.id %} ">Update</a></td>
+                    {% endif %}
+                    {% if perms.sales.delete_sales %}
+                        <td><a href="{% url 'sales_delete' sale.id %}">Delete</a></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         
             </tbody>
         </table>    
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'sales_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
-        </div>
+        {% if perms.sales.add_sales %}
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'sales_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
+            </div>
+        {% endif %}
     </div>
         
 </div>

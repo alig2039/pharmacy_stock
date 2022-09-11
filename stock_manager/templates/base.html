@@ -32,37 +32,36 @@
             <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
                 <img class="bi me-2" width="40" height="32" src="{% static 'logo.jpg' %}" alt="Allan Pharmacy Logo" aria-label="Bootstrap"/>
             </a>
-            
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-left mb-md-0 navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{% url 'sales' %}">Sales</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{% url 'all' %}">Stock</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{% url 'customer' %}">Customers</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{% url 'supplier' %}">Suppliers</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link active" href="{% url 'whusers' %}">Staff</a>
-                </li>                
-            </ul>
-
             {% if user.is_authenticated %}
-                    <div class="text-end">
-                        <a href="{% url 'whusers_detail' user.id %}">{{ user.username |title }}</a>
-                        <!--<a class="btn btn-outline-light me-2" href="{% url 'password_change' %}">Change Password</a>-->
-                        <a class="btn btn-warning" href="{% url 'logout' %}">Log Out</a>
-                    </div>               
-                {% else %}
-                    <div class="text-end">
-                        <a class="btn btn-outline-light me-2" href="{% url 'login' %}">Login</a>
-                        <a class="btn btn-warning" href="{% url 'register' %}">Sign-up</a>
-                    </div>
-                {% endif %}        
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-left mb-md-0 navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{% url 'sales' %}">Sales</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{% url 'all' %}">Stock</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{% url 'customer' %}">Customers</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{% url 'supplier' %}">Suppliers</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link active" href="{% url 'whusers' %}">Staff</a>
+                    </li>                
+                </ul>
+                
+                <div class="text-end">
+                    <a href="{% url 'whusers_detail' user.id %}">{{ user.username |title }}</a>
+                    <!--<a class="btn btn-outline-light me-2" href="{% url 'password_change' %}">Change Password</a>-->
+                    <a class="btn btn-warning" href="{% url 'logout' %}">Log Out</a>
+                </div>               
+            {% else %}
+                <div class="text-end">
+                    <a class="btn btn-outline-light me-2" href="{% url 'login' %}">Login</a>
+                    <a class="btn btn-warning" href="{% url 'register' %}">Sign-up</a>
+                </div>
+            {% endif %}        
             
         </div>
     </nav>

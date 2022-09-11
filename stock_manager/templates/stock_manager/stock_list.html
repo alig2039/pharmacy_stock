@@ -30,16 +30,22 @@
                     <td class="ml-5"><a href="{% url 'stock_detail' stock.id %}">{{stock.name}}</a></td>
                     <td class="text-center">{{stock.unit_price | floatformat:2}}</td>
                     <td class="text-center">{{stock.quantity}}</td>
-                    <td><a href="{% url 'stock_update' stock.id %} ">Update</a></td>
-                    <td><a href="{% url 'stock_delete' stock.id %}">Delete</a></td>
+                    {% if perms.stock.change_stock %}
+                        <td><a href="{% url 'stock_update' stock.id %} ">Update</a></td>
+                    {% endif %}
+                    {% if perms.stock.delete_stock %}
+                        <td><a href="{% url 'stock_delete' stock.id %}">Delete</a></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         
             </tbody>
         </table>    
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'stock_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
-        </div>
+        {% if perms.stock.add_stock %}
+            <div class="d-flex justify-content-center">
+                <a href="{% url 'stock_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
+            </div>
+        {% endif %}
     </div>
         
 </div>
