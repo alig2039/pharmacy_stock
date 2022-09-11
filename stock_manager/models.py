@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.validators import MinValueValidator
 
-# Model for the pharmacy's customers
 class Customer(models.Model):
     names = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
@@ -13,12 +12,6 @@ class Customer(models.Model):
 
     def get_fields(self):
         return [(field.verbose_name, field.value_from_object(self))
-                
-                # if field.verbose_name != 'genre' 
-                
-                # else 
-                #     (field.verbose_name, 
-                #     Genre.objects.get(pk=field.value_from_object(self)).name)
                 
                 for field in self.__class__._meta.fields[1:]
             ]
@@ -33,18 +26,10 @@ class Supplier(models.Model):
         return self.contact_name
 
     def get_fields(self):
-        return [(field.verbose_name, field.value_from_object(self))
-                
-                # if field.verbose_name != 'genre' 
-                
-                # else 
-                #     (field.verbose_name, 
-                #     Genre.objects.get(pk=field.value_from_object(self)).name)
-                
+        return [(field.verbose_name, field.value_from_object(self))                
                 for field in self.__class__._meta.fields[1:]
             ]
 
-# Pharmacy stock model
 class Stock(models.Model):
     name = models.CharField(max_length=100)
     unit_price = models.FloatField(blank=True, null=True, validators=[MinValueValidator(0)])
@@ -56,12 +41,6 @@ class Stock(models.Model):
 
     def get_fields(self):
         return [(field.verbose_name, field.value_from_object(self))
-                
-                # if field.verbose_name != 'genre' 
-                
-                # else 
-                #     (field.verbose_name, 
-                #     Genre.objects.get(pk=field.value_from_object(self)).name)
                 
                 for field in self.__class__._meta.fields[1:]
             ]
@@ -80,12 +59,6 @@ class Sales(models.Model):
 
     def get_fields(self):
         return [(field.verbose_name, field.value_from_object(self))
-                
-                # if field.verbose_name != 'genre' 
-                
-                # else 
-                #     (field.verbose_name, 
-                #     Genre.objects.get(pk=field.value_from_object(self)).name)
                 
                 for field in self.__class__._meta.fields[1:]
             ]
