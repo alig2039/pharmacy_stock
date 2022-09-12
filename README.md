@@ -1,8 +1,8 @@
 Welcome,
 
-This system is an imagining of a medical warehouse's stock management system. With records for Stock, Customers, Sales and Users.
+This system is an intra-net imagining of a medical warehouse's stock management system. With records for Stock, Customers, Sales and Users(Staff). 
 
-The User acceptance criteria is for three groups of users; Clerks, Supervisors and Managers to be able to perform any variation of CRUD activities on Stock, Sales and Customers data according to the rights assigned to those three groups. 
+The User acceptance criteria is for three groups of users(Staff); Clerks, Supervisors and Managers to be able to perform any variation of CRUD activities on Stock, Sales and Customers data according to the rights assigned to those three groups. 
 The rights being:
 - **Clerks** can create and update Sales records with only View rights to other Models.
 - **Supervisors** possess only view rights.
@@ -19,4 +19,6 @@ There are four major models used.
 The system is a Django system hosted on heroku over a Postgres database with SQLite used for initial testing.
 
 ## Testing
+SQLite has been used for initial testing
+The
 
