@@ -64,6 +64,9 @@ There are four major models used.
 * [Heroku](heroku.com) used as a host.
 
 ## Testing
+* Automated testing of URLs and URL names has been implemented and successfully carried out using the Django testing module.
+* User stories were tested to support the View and CRUD functionality imeplemented and expected for every user and every user group
+
 ### Further Testing
 * The site was tested on Google chrome and Ms Edge browsers.
 * A local SQLite database is used for testing data and values with a Postgres database used in production
