@@ -2,7 +2,7 @@ Welcome,
 
 This system is an intra-net imagining of a medical warehouse's stock management system. With records for Stock, Customers, Sales and Users(Staff). 
 
-The User acceptance criteria is for three groups of users(Staff); Clerks, Supervisors and Managers to be able to perform any variation of CRUD activities on Stock, Sales and Customers data according to the rights assigned to those three groups. 
+The User acceptance criteria is for three groups of users(Staff); Clerks and Supervisors/Managers to be able to perform any variation of CRUD activities on Stock, Sales and Customers data according to the rights assigned to those three groups. 
 The rights being:
 - **Clerks** can create and update Sales records with only View rights to other Models.
 - **Supervisors** possess only view rights.
