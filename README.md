@@ -27,6 +27,9 @@ The rights being:
     * As a Supervisor I expect to be able to add, modify and delete existing suppliers.
     * As a Supervisor I expect to be able to view, modify and delete existing system users/staff.
 
+    ## Authetication / Managerial Login
+* The manager will be given the first login credentials that have been created through Django and from then onwards he can allocate rights to the different users. These credentials will also be provided to the examiner for easier access.
+
 ### Design
 * Colour Scheme
     * The main colours used are black and white, a white background with a black navigation bar. With the default Bootstrap buttons and colours used.
@@ -49,18 +52,32 @@ There are four major models used.
 
 ## Technologies Used
 ### Languages Used
-* Python
-* HTML5
+* [Python](https://www.python.org/)
+* [HTML5](https://html.com/html5/)
 * CSS3
 
 ### Frameworks, Libraries & Programs Used
-* Bootstrap was used to assist with the responsiveness and styling of the website.
+* [Django](http://www.djangoproject.com/) was used to build the site.
+* [Bootstrap](https://getbootstrap.com/) was used to assist with the responsiveness and styling of the website.
 * Git was used for version control by utilizing the Gitpod terminal to commit to Git and Push to GitHub.
-* GitHub is used to store the projects code after being pushed from Git.
-
-The system is a Django system hosted on heroku over a Postgres database with SQLite used for initial testing.
+* [GitHub](https://github.com/) is used to store the projects code after being pushed from Git.
+* [Heroku](heroku.com) used as a host.
 
 ## Testing
-SQLite has been used for initial testing
-The
+### Further Testing
+* The site was tested on Google chrome and Ms Edge browsers.
+* A local SQLite database is used for testing data and values with a Postgres database used in production
+
+## Deployment
+The project was developed and deployed to Heroku using the following steps.
+* Cloned the Heroku django starter template following this [guide](https://devcenter.heroku.com/articles/getting-started-with-python)
+* Created a Github repository, added it as a remote and pushed to this repository.
+* Modified the Heroku template to suite my needs.
+
+## Credits
+### Acknowledgements
+* My Mentor Celestine for continuous helpful feedback.
+
+
+
 
