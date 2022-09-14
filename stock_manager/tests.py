@@ -7,19 +7,16 @@ from gettingstarted.urls import urlpatterns
 
 class UrlTests(SimpleTestCase):
     def test_url_exists_at_correct_location(self):
-        for url in ["/", "/stock/create/", "/customer/", "/customer/create", "/sales/", "/sales/
-create", "/supplier/create", "/supplier/", 
-        "/whusers/create", "/whusers/"]:
+        for url in ["/", "/stock/create/", "/customer/", "/customer/create", "/sales/", "/sales/create", "/supplier/create", "/supplier/", "/whusers/create", "/whusers/"]:
             response = self.client.get(url)
-            try:
+        try:
                 self.assertEqual(response.status_code, 301)
             except:
                 self.assertEqual(response.status_code, 302)
 
-    def test_url_available_by_name(self):
+            def test_url_available_by_name(self):
         for name in ["all", "stock_create", "customer", "customer_create", "sales", "sales_create", "supplier_create",
- "supplier", 
-        "whusers_create", "whusers"]:
+ "supplier", "whusers_create", "whusers"]:
             response = self.client.get(reverse(name))
             try:
                 self.assertEqual(response.status_code, 301)
