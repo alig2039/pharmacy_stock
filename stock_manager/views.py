@@ -19,7 +19,7 @@ def custom_login(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(reverse_lazy('all'))
     else:
-        return login(request)
+        return login(request, request.user)
 
 def register(request):
     if not request.user.is_authenticated:
