@@ -7,11 +7,14 @@
     {% endfor %}
 {% endfor %}
 
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Sales /</span> Sales List</h4>
 
-<div class="container d-flex mt-5" style="width: 70%;">
-    <div class="col">
-        <h1 class="text-center">Pharmacy Sales</h1>
-        <table class="table table-striped mt-5">
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+      <h5 class="card-header">Pharmacy Sales</h5>
+      <div class="table-responsive text-nowrap">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     {% comment %} <th>#</th> {% endcomment %}
@@ -54,6 +57,7 @@
                 <a href="{% url 'sales_create' %}" class="d-block btn btn-primary btn-lg my-5">Add New</a>
             </div>
         {% endif %}
+    </div>
     </div>
         
 </div>
