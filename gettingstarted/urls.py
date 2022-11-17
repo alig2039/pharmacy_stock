@@ -38,7 +38,7 @@ urlpatterns = [
     path('whusers/<int:pk>/update/', login_required(UserUpdateView.as_view()), name='whusers_update'),
     path('whusers/<int:pk>/delete/', login_required(UserDeleteView.as_view()), name='whusers_delete'),
 
-    path('login/', login, name="login"),
+    re_path(r'^accounts/login/$', custom_login),
 
     path("admin/", admin.site.urls),
     re_path(r"^accounts/", include("django.contrib.auth.urls")),

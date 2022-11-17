@@ -13,19 +13,11 @@ from django.shortcuts import *
 from django.template import RequestContext
 from .models import *
 
-def login_user(request):
-    logout(request)
-    username = password = ''
-    if request.POST:
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect('all')
-    return render_to_response('login', context_instance=RequestContext(request))
+def custom_login(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse_lazy('all'))
+    else:
+        return login(request)
 
 
 class UserBaseView(View):
