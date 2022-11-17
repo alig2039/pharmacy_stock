@@ -1,36 +1,34 @@
-{% extends 'base.html' %}
+{% extends 'base_main.html' %}
 
 {% block content %}
 
-<div class="container mt-5" style="width: 70%;">
-    <div class="col">
-        <h1 class="text-center">Stock Details</h1>
-        <div class="d-flex justify-content-center">
-            <table class="table table-striped mt-5" style="width: 50%">
-                <thead>
-                    <tr>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                
-                    {% for label, value in stock.get_fields  %}
-                        <tr>
-                            <td>{{label | upper}}</td>
-                            <td>{{value}}</td>
-                        </tr>
-                    {% endfor %}
-                        
-                </tbody>
-            </table>
-        </div>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="{% url 'all' %}">Stock</a> /</span> Stock Detail</h4>
 
-        <div class="d-flex justify-content-center">
-            <a href="{% url 'all' %}" class="d-block btn btn-primary btn-lg my-5">BACK</a>
-        </div>
+    <!-- Basic Bootstrap Table -->
+    <div class="card">
+      <h5 class="card-header">Stock Details</h5>
+      <div class="table-responsive text-nowrap">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for label, value in stock.get_fields  %}
+                    <tr>
+                        <td>{{label | upper}}</td>
+                        <td>{{value}}</td>
+                    </tr>
+                {% endfor %}                    
+            </tbody>
+        </table>
+
+      </div>
     </div>
-        
 </div>
 
 {% endblock  %}
