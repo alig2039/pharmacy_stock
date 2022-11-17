@@ -1,24 +1,31 @@
-{% extends "base.html" %}
+{% extends "base_main.html" %}
 
 {% block content %}
 
-<!-- BOOTSTRAP FORM -->
-
-<div class="container d-flex justify-content-center mt-5" style="width: 25%;">
-    <div class="col mt-5">
-        <form action="" method="post">
-            {% csrf_token %}
-            <table class="table">
-                {{form.as_table}}
-            </table>
-            <div class="container d-flex justify-content-center" style="width: 10%;">
-                <input type="submit" class="btn btn-primary btn-lg" value="Submit" style="margin-right: 30px; margin-top: 30px;">
-                <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{% url 'supplier' %}'; return false;" value="Cancel">
-            </div>    
-        </form> 
-
+<div class="container-xxl flex-grow-1 container-p-y">
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="{% url 'supplier' %}">Supplier</a> /</span> Add/Update Supplier</h4>
+    <br><br>
+    <!-- Basic Layout & Basic with Icons -->
+    <div class="row">
+      <!-- Basic Layout -->
+      <div class="col-xxl">
+        <div class="card mb-4">
+          <div class="card-body">
+            <form>
+                {% csrf_token %}
+                <table class="table">
+                    {{form.as_table}}
+                </table>
+                <div class="container d-flex justify-content-center" style="width: 10%;">
+                    <input type="submit" class="btn btn-primary btn-lg" value="Submit" style="margin-right: 30px; margin-top: 30px;">
+                    <input type="submit" class="btn btn-danger btn-lg" style="margin-top: 30px;" onclick="window.location='{% url 'supplier' %}'; return false;" value="Cancel">
+                </div>                  
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
 <!-- END BOOTSTRAP FORM -->
 
