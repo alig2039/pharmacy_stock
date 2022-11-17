@@ -9,9 +9,11 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import *
+from django.shortcuts import render
 from django.template import RequestContext
+
 from .models import *
+from .forms import *
 
 def custom_login(request):
     if request.user.is_authenticated:
@@ -19,6 +21,26 @@ def custom_login(request):
     else:
         return login(request)
 
+def register(request):
+    if not request.user.is_authenticated:
+        if request.method == "GET":
+            return render(
+                request, "stock_manager/register.html",
+                {"form": RegistrationForm}
+            )
+        elif request.method == "POST":
+            form = RegistrationForm(request.POST)
+            if form.is_valid():
+                user = form.save()
+                login(request, user)
+                return HttpResponseRedirect(reverse_lazy('all'))
+            else:
+                return render(
+                request, "stock_manager/register.html",
+                {"form": RegistrationForm}
+            )
+    else:
+        return HttpResponseRedirect(reverse_lazy('all'))
 
 class UserBaseView(View):
     model = User
@@ -143,24 +165,6 @@ class SalesUpdateView(SalesBaseView, UpdateView):
 
 class SalesDeleteView(PermissionRequiredMixin, SalesBaseView, DeleteView):
     permission_required = 'sales.delete_sales' 
-
-def register(request):
-    if request.method == "GET":
-        return render(
-            request, "stock_manager/register.html",
-            {"form": UserCreationForm}
-        )
-    elif request.method == "POST":
-        form = UserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return HttpResponseRedirect(reverse_lazy('whusers'))
-        else:
-            return render(
-            request, "stock_manager/register.html",
-            {"form": UserCreationForm}
-        )
 
 def permission_denied(request, exception):
    context = {}
