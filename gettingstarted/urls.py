@@ -1,9 +1,11 @@
 from django.urls import path, include, re_path
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import LoginView
 admin.autodiscover()
 
 from stock_manager.views import *
+from stock_manager.forms import *
 
 urlpatterns = [
     path("", login_required(StockListView.as_view()), name="all"),
@@ -35,6 +37,8 @@ urlpatterns = [
     path('whusers/create/', login_required(UserCreateView.as_view()), name='whusers_create'),
     path('whusers/<int:pk>/update/', login_required(UserUpdateView.as_view()), name='whusers_update'),
     path('whusers/<int:pk>/delete/', login_required(UserDeleteView.as_view()), name='whusers_delete'),
+
+    path('login/', login, name="login"),
 
     path("admin/", admin.site.urls),
     re_path(r"^accounts/", include("django.contrib.auth.urls")),
