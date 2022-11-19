@@ -22,11 +22,11 @@ The rights being:
     * As a Cleark I expect to be able to view the Suppliers in the System so that i am able to know Suppliers from whom the product comes.
 
 * Supervisor/Manager Goals
-    * As a Supervisor I expect to be able to add, modify and delete existing sales records.
-    * As a Supervisor I expect to be able to add, modify and delete existing Customers.
-    * As a Supervisor I expect to be able to add, modify and delete existing Stock.
-    * As a Supervisor I expect to be able to add, modify and delete existing suppliers.
-    * As a Supervisor I expect to be able to view, modify and delete existing system users/staff.
+    * As a Supervisor I want to add, modify and delete existing sales records.
+    * As a Supervisor I want to add, modify and delete existing Customers so that they can be available for selection when adding new Sales records.
+    * As a Supervisor I want to add, modify and delete existing Stock so that Sales are made according to accurately existing stock.
+    * As a Supervisor I want to add, modify and delete existing suppliers so that new stock records can be added.
+    * As a Supervisor I want be able to activate newly registered users and assign the right groups and rights to them. I want to also be able to delete or deactivate user accounts of staff nolonger with the company.
 
     ## Authetication / Managerial Login
 * The manager will be given the first login credentials that have been created through Django and from then onwards he can allocate rights to the different users. These credentials will also be provided to the examiner for easier access.
