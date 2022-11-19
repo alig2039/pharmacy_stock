@@ -19,14 +19,14 @@ The rights being:
     * As a Clerk I want to add a new sale and modify existing sales records.
     * As a Clerk I want to view the Stock in the System so that I am able to know which items are in stock before i can add a sales record.
     * As a Clerk I want to view the Customers in the System so that I am able to know which Customers can buy product.
-    * As a Cleark I expect to be able to view the Suppliers in the System so that i am able to know Suppliers from whom the product comes.
+    * As a Clerk I expect to be able to view the Suppliers in the System so that i am able to know Suppliers from whom the product comes.
 
 * Supervisor/Manager Goals
     * As a Supervisor I want to add, modify and delete existing sales records.
     * As a Supervisor I want to add, modify and delete existing Customers so that they can be available for selection when adding new Sales records.
     * As a Supervisor I want to add, modify and delete existing Stock so that Sales are made according to accurately existing stock.
     * As a Supervisor I want to add, modify and delete existing suppliers so that new stock records can be added.
-    * As a Supervisor I want be able to activate newly registered users and assign the right groups and rights to them. I want to also be able to delete or deactivate user accounts of staff nolonger with the company.
+    * As a Supervisor I want be able to activate newly registered users and assign the right groups and rights to them. I want to also be able to delete or deactivate user accounts of staff no longer with the company.
 
     ## Authetication / Managerial Login
 * The manager will be given the first login credentials that have been created through Django and from then onwards he can allocate rights to the different users. These credentials will also be provided to the examiner for easier access.
@@ -73,8 +73,22 @@ There are four major models used.
 * [Heroku](heroku.com) used as a host.
 
 ## Testing
-* Automated testing of URLs and URL names has been implemented and successfully carried out using the Django testing module.
-* User stories were tested to support the View and CRUD functionality imeplemented and expected for every user and every user group
+### Testing User stories
+* Anonymous/Unregistered/First time User
+    * As an anonymous user I want to be able to register for an account on the system so that i can perform the tasks my role requires. A new user is taken to the login form to log into the system. A link to 'Create You own account' is at the bottom of the login form which would take you to the Registration form. After submitting this form, a manager has to log in and activate the account and assign the necessary permissions before that user can log in.
+
+* Clerk Goals
+    * As a Clerk I want to add a new sale and modify existing sales records. At the bottom of the Sales page, showing a table with a list of sales, there is a "Add New Sale" button that takes a user to the Add Sale form if they have the right permissions for it. Adding a new sale automatically reduces the stock count based on the quantity of the sale.
+    * As a Clerk I want to view the Stock in the System so that I am able to know which items are in stock before i can add a sales record. This can be viewed from the Stock page that shows a table with stock in the system. A clerk should not have the rights to add, modify or delete stock so those options are not available to this user. 
+    * As a Clerk I want to view the Customers in the System so that I am able to know which Customers can buy product. This can be viewed from the Customers page that shows a table with the customers added to the system. A clerk does not have the rights to add, modify or delete stock so those options are not available to this user.
+    * As a Clerk I expect to be able to view the Suppliers in the System so that i am able to know Suppliers from whom the product comes. This can be viewed from the Suppliers page that shows a table with the Suppliers added to the system. A clerk does not have the rights to add, modify or delete suppliers so those options are not available to this user.
+
+* Supervisor/Manager Goals
+    * As a Supervisor I want to add, modify and delete existing sales records.
+    * As a Supervisor I want to add, modify and delete existing Customers so that they can be available for selection when adding new Sales records.
+    * As a Supervisor I want to add, modify and delete existing Stock so that Sales are made according to accurately existing stock.
+    * As a Supervisor I want to add, modify and delete existing suppliers so that new stock records can be added.
+    * As a Supervisor I want be able to activate newly registered users and assign the right groups and rights to them. I want to also be able to delete or deactivate user accounts of staff no longer with the company.
 
 ### Further Testing
 * The site was tested on Google chrome and Ms Edge browsers.
