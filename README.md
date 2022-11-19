@@ -40,6 +40,11 @@ The rights being:
 * Imagery
     * The site contains a solo image which is the company logo in the top left hand corner of the navigation bar
 
+## Wireframes
+* List/table [page](https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668847841/list_page.drawio_zmjcgc.png)
+* Item Details. Similar to List page as a table is used without the Add Item button at the bottom [page](https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668847841/item_detail.drawio_hfhkwc.png)
+* Form Page. Also applicable to item modify/update pages [design](https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668847841/form_page.drawio_g34gpv.png)
+
 ## Features
 * Responsive on all device sizes
 
