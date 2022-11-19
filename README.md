@@ -1,5 +1,7 @@
 Welcome,
 
+<img src="https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668849841/Screenshot_2022-11-19_121142_zpaphl.jpg">
+
 This system is an intra-net imagining of a medical warehouse's stock management system. With records for Stock, Customers, Sales and Users(Staff). 
 
 The User acceptance criteria is for three groups of users(Staff); Clerks and Supervisors/Managers to be able to perform any variation of CRUD activities on Stock, Sales and Customers data according to the rights assigned to those three groups. 
@@ -31,6 +33,12 @@ The rights being:
 * The manager will be given the first login credentials that have been created through Django and from then onwards he can allocate rights to the different users. These credentials will also be provided to the examiner for easier access.
 
 ### Design
+
+<img src="https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668849840/Screenshot_2022-11-19_121417_l8z9yi.jpg">
+<img src="https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668849841/Screenshot_2022-11-19_121938_tm694g.jpg">
+<img src="https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668849841/Screenshot_2022-11-19_122103_id4klp.jpg">
+<img src="https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668849841/Screenshot_2022-11-19_121238_sre8yp.jpg">
+
 * Colour Scheme
     * The main colours used are black and white, a white background with a black navigation bar. With the default Bootstrap buttons and colours used.
 
