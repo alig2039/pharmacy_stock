@@ -40,13 +40,10 @@ The rights being:
 <img src="https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668849841/Screenshot_2022-11-19_121238_sre8yp.jpg">
 
 * Colour Scheme
-    * The main colours used are black and white, a white background with a black navigation bar. With the default Bootstrap buttons and colours used.
-
-* Typography
-    *
+    * The theme is dominantly white with blue links, logo and buttons to create contrast.
 
 * Imagery
-    * The site contains a solo image which is the company logo in the top left hand corner of the navigation bar
+    * The site contains a solo image which is the company logo.
 
 ## Wireframes
 * List/table [page](https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1668847841/list_page.drawio_zmjcgc.png)
