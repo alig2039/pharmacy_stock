@@ -13,14 +13,13 @@ The rights being:
 ## User Experience(UX)
 ### User Stories
 * Anonymous/Unregistered/First time User
-    * As an anonymous user I should not be able to view any content without logging in
-    * As an anonymous user I should be able to register for an account on the system.
+    * As an anonymous user I want to be able to register for an account on the system so that i can perform the tasks my role requires.
 
 * Clerk Goals
-    * As a Clerk I expect to be able to add a new sale and modify and existing sale.
-    * As a Clerk I expect to be able to view the Stock in the System
-    * As a Clerk I expect to be able to view the Customers in the System
-    * As a Cleark I expect to be able to view the Suppliers in the System
+    * As a Clerk I want to add a new sale and modify existing sales records.
+    * As a Clerk I want to view the Stock in the System so that I am able to know which items are in stock before i can add a sales record.
+    * As a Clerk I want to view the Customers in the System so that I am able to know which Customers can buy product.
+    * As a Cleark I expect to be able to view the Suppliers in the System so that i am able to know Suppliers from whom the product comes.
 
 * Supervisor/Manager Goals
     * As a Supervisor I expect to be able to add, modify and delete existing sales records.
