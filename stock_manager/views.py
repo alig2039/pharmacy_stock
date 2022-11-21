@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.template import RequestContext
 
@@ -65,7 +66,7 @@ class UserDeleteView(PermissionRequiredMixin, UserBaseView, DeleteView):
 class StockBaseView(View):
     model = Stock
     fields = '__all__'
-    success_url = reverse_lazy('all')
+    success_url = reverse_lazy('all')    
 
 class StockListView(StockBaseView, ListView):
     pass
@@ -73,11 +74,13 @@ class StockListView(StockBaseView, ListView):
 class StockDetailView(StockBaseView, DetailView):
     pass
     
-class StockCreateView(PermissionRequiredMixin, StockBaseView, CreateView):
+class StockCreateView(PermissionRequiredMixin, SuccessMessageMixin, StockBaseView, CreateView):
     permission_required = 'stock.add_stock'
+    success_message = "Stock was added successfully"
 
-class StockUpdateView(PermissionRequiredMixin, StockBaseView, UpdateView):
+class StockUpdateView(PermissionRequiredMixin, SuccessMessageMixin, StockBaseView, UpdateView):
     permission_required = 'stock.change_stock'
+    success_message = "Stock was updated successfully"
 
 class StockDeleteView(PermissionRequiredMixin, StockBaseView, DeleteView):
     permission_required = 'stock.delete_stock'
@@ -93,11 +96,13 @@ class CustomerListView(CustomerBaseView, ListView):
 class CustomerDetailView(CustomerBaseView, DetailView):
     pass
     
-class CustomerCreateView(PermissionRequiredMixin, CustomerBaseView, CreateView):
+class CustomerCreateView(PermissionRequiredMixin, SuccessMessageMixin, CustomerBaseView, CreateView):
     permission_required = 'customer.add_customer'
+    success_message = "Customer was created successfully"
 
-class CustomerUpdateView(PermissionRequiredMixin, CustomerBaseView, UpdateView):
+class CustomerUpdateView(PermissionRequiredMixin, SuccessMessageMixin, CustomerBaseView, UpdateView):
     permission_required = 'customer.change_customer'
+    success_message = "Customer was updated successfully"
 
 class CustomerDeleteView(PermissionRequiredMixin, CustomerBaseView, DeleteView):
     permission_required = 'customer.delete_customer'
@@ -113,11 +118,13 @@ class SupplierListView(SupplierBaseView, ListView):
 class SupplierDetailView(SupplierBaseView, DetailView):
     pass
     
-class SupplierCreateView(PermissionRequiredMixin, SupplierBaseView, CreateView):
+class SupplierCreateView(PermissionRequiredMixin, SuccessMessageMixin, SupplierBaseView, CreateView):
     permission_required = 'supplier.add_supplier'
+    success_message = "Supplier was added successfully"
 
-class SupplierUpdateView(PermissionRequiredMixin, SupplierBaseView, UpdateView):
+class SupplierUpdateView(PermissionRequiredMixin, SuccessMessageMixin, SupplierBaseView, UpdateView):
     permission_required = 'supplier.change_supplier'
+    success_message = "Supplier was updated successfully"
 
 class SupplierDeleteView(PermissionRequiredMixin, SupplierBaseView, DeleteView):
     permission_required = 'supplier.delete_supplier'
@@ -133,8 +140,9 @@ class SalesListView(SalesBaseView, ListView):
 class SalesDetailView(SalesBaseView, DetailView):
     pass
     
-class SalesCreateView(SalesBaseView, CreateView):
+class SalesCreateView(SuccessMessageMixin, SalesBaseView, CreateView):
     fields = ['customer', 'drug', 'quantity']
+    success_message = "Sales record was added successfully"
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -148,8 +156,9 @@ class SalesCreateView(SalesBaseView, CreateView):
         # remember the import: from django.http import HttpResponseRedirect
         return HttpResponseRedirect(self.get_success_url())
 
-class SalesUpdateView(SalesBaseView, UpdateView):
+class SalesUpdateView(SuccessMessageMixin, SalesBaseView, UpdateView):
     fields = ['customer', 'drug', 'quantity']
+    success_message = "Sales record was updated successfully"
 
     def form_valid(self, form):
         form.instance.updated_by = self.request.user
