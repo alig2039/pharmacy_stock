@@ -101,7 +101,8 @@ There are four major models used.
 The project was developed and deployed to Heroku using the following steps.
 * Cloned the Heroku django starter template following this [guide](https://devcenter.heroku.com/articles/getting-started-with-python)
 * Created a Github repository, added it as a remote and pushed to this repository.
-* Modified the Heroku template to suite my needs.
+* Modified the Heroku template to suite my needs. Based on the user stories and general idea of what the intention of the system was, a stock manager app was created and models required for customers, suppliers, staff and stock were created. Views were created based on Django class based views with the default Create, Update, View and Delete views used to give CRUD functionality. This was complimented by custom calculations such as that which reduces the stock count at every sale. User management and access control was also implmeneted by extending the default Django auth model and views incluing the login and user registrations views.
+* Styling was assisted by the Bootstrap HTML theme used.
 
 ## Credits
 ### Acknowledgements
