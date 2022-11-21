@@ -9,6 +9,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.template import RequestContext
@@ -78,9 +79,17 @@ class StockCreateView(PermissionRequiredMixin, SuccessMessageMixin, StockBaseVie
     permission_required = 'stock.add_stock'
     success_message = "Stock was added successfully"
 
+    def form_invalid(self, form):
+        messages.error(self.request, 'Create Failed.')
+        return super().form_invalid(form)
+
 class StockUpdateView(PermissionRequiredMixin, SuccessMessageMixin, StockBaseView, UpdateView):
     permission_required = 'stock.change_stock'
     success_message = "Stock was updated successfully"
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Update Failed.')
+        return super().form_invalid(form)
 
 class StockDeleteView(PermissionRequiredMixin, StockBaseView, DeleteView):
     permission_required = 'stock.delete_stock'
@@ -100,9 +109,17 @@ class CustomerCreateView(PermissionRequiredMixin, SuccessMessageMixin, CustomerB
     permission_required = 'customer.add_customer'
     success_message = "Customer was created successfully"
 
+    def form_invalid(self, form):
+        messages.error(self.request, 'Create Failed.')
+        return super().form_invalid(form)
+
 class CustomerUpdateView(PermissionRequiredMixin, SuccessMessageMixin, CustomerBaseView, UpdateView):
     permission_required = 'customer.change_customer'
     success_message = "Customer was updated successfully"
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Update Failed.')
+        return super().form_invalid(form)
 
 class CustomerDeleteView(PermissionRequiredMixin, CustomerBaseView, DeleteView):
     permission_required = 'customer.delete_customer'
@@ -122,9 +139,17 @@ class SupplierCreateView(PermissionRequiredMixin, SuccessMessageMixin, SupplierB
     permission_required = 'supplier.add_supplier'
     success_message = "Supplier was added successfully"
 
+    def form_invalid(self, form):
+        messages.error(self.request, 'Create Failed.')
+        return super().form_invalid(form)
+
 class SupplierUpdateView(PermissionRequiredMixin, SuccessMessageMixin, SupplierBaseView, UpdateView):
     permission_required = 'supplier.change_supplier'
     success_message = "Supplier was updated successfully"
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Update Failed.')
+        return super().form_invalid(form)
 
 class SupplierDeleteView(PermissionRequiredMixin, SupplierBaseView, DeleteView):
     permission_required = 'supplier.delete_supplier'
@@ -156,6 +181,10 @@ class SalesCreateView(SuccessMessageMixin, SalesBaseView, CreateView):
         # remember the import: from django.http import HttpResponseRedirect
         return HttpResponseRedirect(self.get_success_url())
 
+    def form_invalid(self, form):
+        messages.error(self.request, 'Create Failed.')
+        return super().form_invalid(form)
+
 class SalesUpdateView(SuccessMessageMixin, SalesBaseView, UpdateView):
     fields = ['customer', 'drug', 'quantity']
     success_message = "Sales record was updated successfully"
@@ -171,6 +200,10 @@ class SalesUpdateView(SuccessMessageMixin, SalesBaseView, UpdateView):
         # do something with self.object
         # remember the import: from django.http import HttpResponseRedirect
         return HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form):
+        messages.error(self.request, 'Update Failed.')
+        return super().form_invalid(form)
 
 class SalesDeleteView(PermissionRequiredMixin, SalesBaseView, DeleteView):
     permission_required = 'sales.delete_sales' 

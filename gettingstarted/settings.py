@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 import django_heroku
 from decouple import config
+from django.contrib import messages
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -79,6 +80,14 @@ TEMPLATES = [
 WSGI_APPLICATION = "gettingstarted.wsgi.application"
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
