@@ -91,6 +91,9 @@ There are four major models used.
     * As a Supervisor I want be able to activate newly registered users and assign the right groups and rights to them. I want to also be able to delete or deactivate user accounts of staff no longer with the company. The staff page has a table showing a list of all the users. For each record there is an Update or Delete link at the right of the row. Following the Update links takes the user to a page that inherits from Django's default user management page, this allows the manager to activate and assign groups and permissions to the user. Clicking the delete link takes the manager to a page where that user can be deleted.
 
 ### Further Testing
+<img src+"https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1669007458/tests_kofxdu.jpg">
+
+* Automated testing of models and views was written into a tests.py file. Results above.
 * The site was tested on Google chrome and Ms Edge browsers.
 * A local SQLite database is used for testing data and values with a Postgres database used in production
 

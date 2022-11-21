@@ -39,16 +39,16 @@ class SupplierTest(TestCase):
         return Supplier.objects.create(contact_name=contact_name, supplier_name=supplier_name ,address=address, contact_number=contact_number)
 
     # view tests
-    def test_sales_list_view(self):
-        url = reverse("sales")
+    def test_supplier_list_view(self):
+        url = reverse("supplier")
         resp = self.client.get(url)
         if resp.status_code == '200':
             self.assertEqual(resp.status_code, 200)
         else:
             self.assertEqual(resp.status_code, 302)
 
-    def test_sales_create_view(self):
-        url = reverse("sales_create")
+    def test_supplier_create_view(self):
+        url = reverse("supplier_create")
         resp = self.client.get(url)
         if resp.status_code == '200':
             self.assertEqual(resp.status_code, 200)
