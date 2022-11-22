@@ -95,6 +95,7 @@ There are four major models used.
 
 * Automated testing of models and views was written into a tests.py file. Results above.
 * The site was tested on Google chrome and Ms Edge browsers.
+* The site was tested on different devices including [Galaxy Note](https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1669158855/galaxy_note_xystc6.jpg), [Iphone11](https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1669158855/iphone11_pljhcu.jpg), [IPad](https://res.cloudinary.com/allan-gerald-sserwanga/image/upload/v1669158856/ipad_c4eqd0.jpg)
 * A local SQLite database is used for testing data and values with a Postgres database used in production
 
 ### Known Bugs and Issues
