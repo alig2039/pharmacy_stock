@@ -97,6 +97,9 @@ There are four major models used.
 * The site was tested on Google chrome and Ms Edge browsers.
 * A local SQLite database is used for testing data and values with a Postgres database used in production
 
+### Known Bugs and Issues
+* The Environment file is included as the values are required for hosting. Deployment is done via the Github repository and as such the values are required during the commit.
+
 ## Deployment
 The project was developed and deployed to Heroku using the following steps.
 * Cloned the Heroku django starter template following this [guide](https://devcenter.heroku.com/articles/getting-started-with-python)
