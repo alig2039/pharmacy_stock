@@ -13,6 +13,7 @@ from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.template import RequestContext
+from django.db.models import RestrictedError
 
 from .models import *
 from .forms import *
@@ -153,6 +154,16 @@ class SupplierUpdateView(PermissionRequiredMixin, SuccessMessageMixin, SupplierB
 
 class SupplierDeleteView(PermissionRequiredMixin, SupplierBaseView, DeleteView):
     permission_required = 'supplier.delete_supplier'
+
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+        except RestrictedError:
+            messages.add_message(self.request, messages.ERROR, 'Cannot Delete Record because it is referenced by Stock records. Please delete related records first!')
+            return HttpResponseRedirect(reverse_lazy('supplier'))
+
+        messages.add_message(self.request, messages.SUCCESS, 'Record Deleted Successfully')
+        return HttpResponseRedirect(reverse_lazy('supplier'))
 
 class SalesBaseView(View):
     model = Sales
