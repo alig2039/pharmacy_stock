@@ -65,6 +65,16 @@ class UserUpdateView(PermissionRequiredMixin, UserBaseView, UpdateView):
 class UserDeleteView(PermissionRequiredMixin, UserBaseView, DeleteView):
     permission_required = 'auth.delete_user'
 
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+        except RestrictedError:
+            messages.add_message(self.request, messages.ERROR, 'Cannot Delete Record because it is referenced by other records. Please delete related records first!')
+            return HttpResponseRedirect(reverse_lazy('whusers'))
+
+        messages.add_message(self.request, messages.SUCCESS, 'Record Deleted Successfully')
+        return HttpResponseRedirect(reverse_lazy('whusers'))
+
 class StockBaseView(View):
     model = Stock
     fields = '__all__'
@@ -95,6 +105,16 @@ class StockUpdateView(PermissionRequiredMixin, SuccessMessageMixin, StockBaseVie
 class StockDeleteView(PermissionRequiredMixin, StockBaseView, DeleteView):
     permission_required = 'stock.delete_stock'
 
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+        except RestrictedError:
+            messages.add_message(self.request, messages.ERROR, 'Cannot Delete Record because it is referenced by other records. Please delete related records first!')
+            return HttpResponseRedirect(reverse_lazy('all'))
+
+        messages.add_message(self.request, messages.SUCCESS, 'Record Deleted Successfully')
+        return HttpResponseRedirect(reverse_lazy('all'))
+
 class CustomerBaseView(View):
     model = Customer
     fields = '__all__'
@@ -124,6 +144,16 @@ class CustomerUpdateView(PermissionRequiredMixin, SuccessMessageMixin, CustomerB
 
 class CustomerDeleteView(PermissionRequiredMixin, CustomerBaseView, DeleteView):
     permission_required = 'customer.delete_customer'
+
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+        except RestrictedError:
+            messages.add_message(self.request, messages.ERROR, 'Cannot Delete Record because it is referenced by other records. Please delete related records first!')
+            return HttpResponseRedirect(reverse_lazy('customer'))
+
+        messages.add_message(self.request, messages.SUCCESS, 'Record Deleted Successfully')
+        return HttpResponseRedirect(reverse_lazy('customer'))
 
 class SupplierBaseView(View):
     model = Supplier
@@ -159,7 +189,7 @@ class SupplierDeleteView(PermissionRequiredMixin, SupplierBaseView, DeleteView):
         try:
             self.object.delete()
         except RestrictedError:
-            messages.add_message(self.request, messages.ERROR, 'Cannot Delete Record because it is referenced by Stock records. Please delete related records first!')
+            messages.add_message(self.request, messages.ERROR, 'Cannot Delete Record because it is referenced by other records. Please delete related records first!')
             return HttpResponseRedirect(reverse_lazy('supplier'))
 
         messages.add_message(self.request, messages.SUCCESS, 'Record Deleted Successfully')
