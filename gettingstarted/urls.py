@@ -2,6 +2,9 @@ from django.urls import path, include, re_path
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
+from django.conf import settings
+from django.conf.urls.static import static
+
 admin.autodiscover()
 
 from stock_manager.views import *
@@ -42,9 +45,10 @@ urlpatterns = [
 
     path("admin/", admin.site.urls),
     re_path(r"^accounts/", include("django.contrib.auth.urls")),
-    re_path(r"^register/", register, name="register"),
-
- 
+    re_path(r"^register/", register, name="register"), 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler403 = 'stock_manager.views.permission_denied'
