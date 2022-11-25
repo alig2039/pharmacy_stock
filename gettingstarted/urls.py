@@ -48,10 +48,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     re_path(r"^accounts/", include("django.contrib.auth.urls")),
     re_path(r"^register/", register, name="register"), 
-]
-
-if settings.DEBUG:
-    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT),
-    urlpatterns += staticfiles_urlpatterns()
+    
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 handler403 = 'stock_manager.views.permission_denied'
