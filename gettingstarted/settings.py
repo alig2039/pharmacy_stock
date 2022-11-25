@@ -33,7 +33,7 @@ SECRET_KEY = "deb579d5-70ab-4921-a6b5-8d6ce49fc23a"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['secret-castle-88989.herokuapp.com']
 
 LOGIN_REDIRECT_URL = 'all'
 LOGOUT_REDIRECT_URL = 'all'
@@ -42,13 +42,13 @@ LOGOUT_REDIRECT_URL = 'all'
 # Application definition
 
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
+    #'whitenoise.runserver_nostatic',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    #"django.contrib.staticfiles",
+    "django.contrib.staticfiles",
     "django_extensions",
     "stock_manager",
     "django_tables2",
